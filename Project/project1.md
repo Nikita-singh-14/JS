@@ -74,3 +74,95 @@ setInterval(function(){
 },1000)
 
 ```
+
+# Project 4
+```
+let randomNumber = Math.floor(Math.random()*100) + 1;
+console.log(randomNumber)
+
+const guessInput = document.getElementById("guessField");
+const submit = document.getElementById("subt");
+const form = document.querySelector(".form");
+
+const remainingChance = document.querySelector(".lastResult");
+const lowOrHi = document.querySelector(".lowOrHi")
+let guesses = document.querySelector(".guesses");
+
+const resultParse = document.querySelector(".resultParas");
+
+let playGame = true;
+
+let currentChance = 1;
+let arrChance = [];
+
+let p = document.createElement('p');
+let startNewGame;
+
+
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  validate(parseInt(guessInput.value));
+})
+
+function validate(num) {
+  if (isNaN(num)) {
+    console.log("Please enter a valid number");
+  } else if (num < 1 || num > 100) {
+    console.log("Please enter a number between 1 and 100");
+  } else {
+    checkcondition(num);
+  }
+}
+
+function checkcondition(number){
+  if(number === randomNumber){
+    displayMessage( `congrats! you guess the random number ${randomNumber}`);
+    endGame()
+  }else if(arrChance.length == 10){
+    displayMessage(`Game Over random number ${randomNumber}`)
+    endGame()
+  }else if(number > randomNumber){
+    displayMessage(`your number is tooo high`)
+    guessInput.value = ''
+
+  }else if(number < randomNumber){
+    displayMessage(`your number is tooo low`)
+    guessInput.value = ''
+    
+  }
+}
+
+
+
+function displayMessage(message){
+  p.innerHTML = `${message}`
+  form.appendChild(p)
+  arrChance.push(guessInput.value)
+  guesses.innerHTML = arrChance;
+  remainingChance.innerHTML = remainingChance.textContent - 1;
+}
+
+function endGame(){
+  guessInput.value = ''
+  startNewGame = document.createElement('h6');
+  startNewGame.innerHTML = 'start New Game'
+  resultParse.appendChild(startNewGame)
+  guessInput.disabled = true;
+  playGame = false;
+  startNewGame.addEventListener('click', newGame)
+}
+
+function newGame(){
+  randomNumber = Math.floor(Math.random()*100) + 1;
+  console.log(randomNumber)
+  arrChance = [];
+  currentChance = 1;
+  remainingChance.innerHTML = 10
+  form.removeChild(p);
+  resultParse.removeChild(startNewGame)
+  guessInput.disabled = false;
+  playGame = true;
+}
+
+
+```
