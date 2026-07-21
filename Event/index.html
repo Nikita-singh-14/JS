@@ -7,7 +7,7 @@
 </head>
 <body style="background-color: #212121; color: aliceblue;">
     <h2>Amazing image</h2>
-    <div >
+    <div>
         <ul id="images">
             <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
             <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
@@ -19,9 +19,38 @@
         </ul>
    </div>
 </body>
-<script >
-    document.getElementById('owl').onclick() = function(){
-        alert("clicked Again")
-    }
+<script>
+
+    //attachEvent() => pahle use hota tha
+    // j query => on
+    // document.querySelector('#images').onclick = function(){
+    //     console.log("clicked")
+    // }
+    // document.querySelector('#owl').onclick = function(){
+    //     console.log("clicked owl")
+    // }
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.altKey)
+    }, false)
+    // document.querySelector('#owl').addEventListener('click', function(e){
+    //     e.stopPropagation()
+    //     console.log("clicked on owl")
+    // }, true)
+
+    //type, timestamp, preventDefault
+    //target, toElement, srcElement, currentTarget, clientX, clientY, screenX, screenY
+    //altKey, ctrlKey, shiftKey, keyCode
+
+
+    document.querySelector('#images').addEventListener('click', function(e){
+        //console.log(e.target.parentNode)
+        const removeIt = e.target.parentNode;
+        // removeIt.remove()
+        removeIt.parentNode.removeChild(removeIt)
+    }, false)
+
+
+
 </script>
 </html>
