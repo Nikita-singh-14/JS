@@ -166,3 +166,38 @@ function newGame(){
 
 
 ```
+
+# Project 6
+```
+const stop = document.querySelector("#stop")
+const start = document.querySelector("#start")
+const h1 = document.querySelector("hi");
+
+const randomColor = function() {
+  let hex = '0123456789ABCDEF'
+  let color = "#"
+  for(let i = 0; i<6; i++){
+    color += hex[Math.floor(Math.random() * 16)]
+  }
+  console.log(color)
+  return color
+}
+let intervalId;
+const startChangingColor = function(){
+  
+  if(!intervalId){
+    intervalId = setInterval(function(){
+        document.querySelector('body').style.background = randomColor()
+      }, 1000)
+    }
+
+  
+}
+
+const stopChangingColor = function() {
+  clearInterval(intervalId);
+  intervalId = null;
+}
+start.addEventListener('click', startChangingColor)
+stop.addEventListener('click', stopChangingColor)
+```
