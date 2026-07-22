@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeInterval</title>
+</head>
+<body>
+    <h1>Nikita Singh</h1>
+    <button id='start'>start</button>
+    <button id='stop'>stop</button>
+</body>
+<script>
+    // const print = function(str){
+    //   console.log(Date.now(), str)
+    // }
+    // const intervalId = setInterval(print, 1000, "hii")
+    // setTimeout(function(){
+    //     clearInterval(intervalId)  
+    //     console.log("stop")
+    // }, 5000)
+
+    const print = function(str){
+      console.log(Date.now(), str)
+    }
+    let intervalId;
+    document.querySelector('#start').addEventListener('click',function(){
+        intervalId = setInterval(print, 1000, 'hii')
+    })
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearInterval(intervalId)
+        console.log("Stop")
+    })
+
+
+    
+</script>
+</html>
