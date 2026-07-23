@@ -167,6 +167,32 @@ function newGame(){
 
 ```
 
+
+# Project 5
+```
+const insert = document.querySelector("#insert")
+
+document.addEventListener('keydown', (e) => {
+  insert.innerHTML = `
+  <table>
+  <tr>
+    <th>key</th>
+    <th>keyCode</th>
+    <th>Code</th>
+    <th>altKey</th>
+  </tr>
+  <tr>
+    <td>${e.key === ' ' ? 'space' : e.key}</td>
+    <td>${e.keyCode}</td>
+    <td>${e.code}</td>
+    <td>${e.altKey}</td>
+  </tr>
+</table>
+  `
+})
+
+```
+
 # Project 6
 ```
 const stop = document.querySelector("#stop")
